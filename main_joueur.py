@@ -3,6 +3,7 @@ from tkinter import ttk, messagebox, simpledialog
 from grille import generer_grille
 from dictionnaire import charger_dictionnaire
 from moteur import mot_valide_dans_grille, points_mot
+import info
 
 dictionnaire = charger_dictionnaire("assets/scrabble.txt")
 grille = generer_grille()
@@ -56,7 +57,7 @@ def fin_partie():
 
 # Interface Tkinter
 racine = tk.Tk()
-racine.title("Boggle - Mode Joueur")
+racine.title(f"Boggle - Mode Joueur - {info.version}")
 racine.configure(bg="#f4f4f4")
 
 cadre_grille = ttk.Frame(racine)
@@ -69,7 +70,6 @@ entree_mot.focus()
 
 btn_valider = ttk.Button(racine, text="Valider", command=valider_mot)
 btn_valider.grid(row=2, column=0)
-
 racine.bind("<Return>", lambda event: valider_mot())
 
 champ_mots = tk.Text(racine, width=40, height=15)
